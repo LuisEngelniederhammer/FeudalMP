@@ -10,9 +10,21 @@ config_version=4
 
 [application]
 
-config/name="FeudalMP1"
+config/name="FeudalMP"
 run/main_scene="res://src/main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Logger="*res://src/logger/Logger.tscn"
+Network="*res://src/network/Network.tscn"
+Server="*res://src/network/Server.tscn"
+Client="*res://src/network/Client.tscn"
+
+[feudalmp]
+
+network/server/port=1991
+network/server/max_players=100
 
 [physics]
 
