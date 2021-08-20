@@ -1,3 +1,4 @@
+class_name Authentication
 extends Node
 
 enum AUTH_STATE {

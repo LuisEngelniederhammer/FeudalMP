@@ -5,11 +5,14 @@ const SETTING_PATH = 'feudalmp/network/server/'
 var networkInstance;
 var port;
 
-func start() -> void:
-    Logger.info("Starting Client");
+func start(address:String, port:int) -> void:
+    if(!isInputValid(address, port)):
+        return;
+        
+    Logger.info("Starting Client on %s:%s" % [address, port]);
     readConfiguration();
     networkInstance = NetworkedMultiplayerENet.new();
-    networkInstance.create_client("127.0.0.1", port);
+    networkInstance.create_client(address, port);
     get_tree().network_peer = networkInstance;
     
     networkInstance.connect("connection_succeeded", Network, "eventConnectionSucceeded");
@@ -18,3 +21,5 @@ func start() -> void:
 func readConfiguration() -> void:
     port = ProjectSettings.get_setting(SETTING_PATH + 'port');
     
+func isInputValid(address,port) -> bool:
+    return ((address != null && !address.empty()) && (port != null && port > 9));

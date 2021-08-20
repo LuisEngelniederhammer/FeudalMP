@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/ipconnect/ipconnect.gd" type="Script" id=1]
+[ext_resource path="res://ui/utils/backToMainMenu.tscn" type="PackedScene" id=2]
+
+[node name="ipconnect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 362.0
+margin_top = 229.0
+margin_right = 662.0
+margin_bottom = 371.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="addressInput" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "127.0.0.1"
+clear_button_enabled = true
+placeholder_text = "127.0.0.1"
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/addressInput"]
+margin_top = -18.0
+margin_right = 300.0
+margin_bottom = -4.0
+text = "ip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portInput" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+placeholder_text = "1991"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/portInput"]
+margin_top = -18.0
+margin_right = 148.0
+margin_bottom = -4.0
+text = "port"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 44.0
+text = "username"
+
+[node name="usernameInput" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 300.0
+margin_bottom = 72.0
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 300.0
+margin_bottom = 90.0
+text = "password"
+
+[node name="passwordInput" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 300.0
+margin_bottom = 118.0
+secret = true
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 122.0
+margin_right = 300.0
+margin_bottom = 142.0
+text = "connect"
+
+[node name="Control" parent="CenterContainer/VBoxContainer/Button" instance=ExtResource( 2 )]
+margin_left = -362.0
+margin_top = -336.0
+margin_right = -662.0
+margin_bottom = -356.0
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="onButtonPressed"]

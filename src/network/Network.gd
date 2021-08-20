@@ -10,8 +10,8 @@ func _ready() -> void:
 
     if(isServer):
         Server.start();
-    else:
-        Client.start();
+    #else:
+    #    Client.start();
 
 func eventConnectionSucceeded() -> void:
     Logger.info('Connection success');
@@ -25,3 +25,6 @@ func eventPeerConnected(id:int) -> void:
 
 func eventPeerDisconnected(id:int) -> void:
     Logger.info('Peer %d disconnected' % id);
+
+func getAuthentication() -> Authentication:
+    return self.get_node("Authentication") as Authentication;
